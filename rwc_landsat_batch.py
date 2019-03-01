@@ -55,8 +55,6 @@ if __name__ == '__main__':
         cmdstr = cmdstr + ' -d ' + MAXDISTANCE + ' -i ' + FILL_SIZE + ' -b ' + MAXDISTANCE_BRANCH_REMOVAL + ' '
         cmdstr = cmdstr + ' -v -x ' + str(x[n]) + ' -y ' + str(y[n]) + ' -n ' + site_no[n]
 
-        print(cmdstr)
-
         os.system(cmdstr)
 
         print('submitted task ', n + 1, ' of ', N)
