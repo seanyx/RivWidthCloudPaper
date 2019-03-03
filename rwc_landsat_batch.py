@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     for n in range(START_NO, N):
 
-        maximum_no_of_tasks(MAXIMUM_NO_OF_TASKS, 45)
+        maximum_no_of_tasks(MAXIMUM_NO_OF_TASKS, 15)
 
         cmdstr = 'python rwc_landsat.py ' +  sceneIDList[n] + ' -f ' + FORMAT + ' -o ' + OUTPUT_FOLDER + ' '
         cmdstr = cmdstr + ' -w ' + WATER_METHOD + ' -d ' + MAXDISTANCE + ' -i ' + FILL_SIZE + ' -b ' + MAXDISTANCE_BRANCH_REMOVAL + ' '
