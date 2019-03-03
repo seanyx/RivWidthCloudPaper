@@ -15,6 +15,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog = 'rwc_landsat_batch.py', description = "Batch execute rwc_landsat.py for a csv files that contains scene IDs and/or site locations")
     parser.add_argument('ID_FILE', help = 'csv file contains column LANDSAT_ID, site_no, lon, and lat', type = str)
     parser.add_argument('-f', '--FORMAT', help = "output file format,  much be one or  any combination of 'csv', 'shp'", type = str, default = 'CSV')
+    parser.add_argument('-w', '--WATER_METHOD', help = "water classification method using either 'Jones2019' or 'Zou2018'", type = str, default = 'Jones2019')
     parser.add_argument('-d', '--MAXDISTANCE', help = '', type = str, default = '4000')
     parser.add_argument('-i', '--FILL_SIZE', help = '', type = str, default = '333')
     parser.add_argument('-b', '--MAXDISTANCE_BRANCH_REMOVAL', help = '', type = str, default = '500')
@@ -26,6 +27,7 @@ if __name__ == '__main__':
 
     ID_FILE = args.ID_FILE
     FORMAT = args.FORMAT
+    WATER_METHOD = args.WATER_METHOD
     MAXDISTANCE = args.MAXDISTANCE
     FILL_SIZE = args.FILL_SIZE
     MAXDISTANCE_BRANCH_REMOVAL = args.MAXDISTANCE_BRANCH_REMOVAL
@@ -52,7 +54,7 @@ if __name__ == '__main__':
         maximum_no_of_tasks(MAXIMUM_NO_OF_TASKS, 45)
 
         cmdstr = 'python rwc_landsat.py ' +  sceneIDList[n] + ' -f ' + FORMAT + ' -o ' + OUTPUT_FOLDER + ' '
-        cmdstr = cmdstr + ' -d ' + MAXDISTANCE + ' -i ' + FILL_SIZE + ' -b ' + MAXDISTANCE_BRANCH_REMOVAL + ' '
+        cmdstr = cmdstr + ' -w ' + WATER_METHOD + ' -d ' + MAXDISTANCE + ' -i ' + FILL_SIZE + ' -b ' + MAXDISTANCE_BRANCH_REMOVAL + ' '
         cmdstr = cmdstr + ' -v -x ' + str(x[n]) + ' -y ' + str(y[n]) + ' -n ' + site_no[n]
 
         os.system(cmdstr)

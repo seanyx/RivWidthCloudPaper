@@ -1,7 +1,7 @@
 
 import ee
 
-def rwGenSR(aoi = None, MAXDISTANCE = 4000, FILL_SIZE = 333, MAXDISTANCE_BRANCH_REMOVAL = 500):
+def rwGenSR(aoi = None, WATER_METHOD = 'Jones2019', MAXDISTANCE = 4000, FILL_SIZE = 333, MAXDISTANCE_BRANCH_REMOVAL = 500):
 
     grwl = ee.FeatureCollection("users/eeProject/grwl")
     from functions_landsat import CalculateWaterAddFlagsSR
@@ -14,7 +14,7 @@ def rwGenSR(aoi = None, MAXDISTANCE = 4000, FILL_SIZE = 333, MAXDISTANCE_BRANCH_
         image = image.clip(aoi)
 
         # // derive water mask and masks for flags
-        imgOut = CalculateWaterAddFlagsSR(image, 'Jones2019')
+        imgOut = CalculateWaterAddFlagsSR(image, WATER_METHOD)
         # // calculate river mask
         imgOut = ExtractRiver(imgOut, grwl, MAXDISTANCE, FILL_SIZE)
         # // calculate centerline
