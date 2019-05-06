@@ -55,9 +55,9 @@ def AddFmaskSR(image):
 
     return image.addBands(fmask)
 def CalcHillShadesSR(image):
-    # // hill shades
-    mergedDEM = ee.Image("JAXA/ALOS/AW3D30_V1_1").select('MED').clip(image.geometry())
-    # // mergedDEM = mergedDEM.reproject(crs, null, 30);
+    # // calculate hill shades
+    mergedDEM = ee.Image("users/eeProject/MERIT").select('elevation').clip(image.geometry())
+
     shiftDistance = 30
     dp1 = ee.Image.cat(ee.Image(shiftDistance), ee.Image(shiftDistance))
     dp2 = ee.Image.cat(ee.Image(-shiftDistance), ee.Image(shiftDistance))

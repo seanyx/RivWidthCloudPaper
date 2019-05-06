@@ -343,7 +343,7 @@ def CalculateWidth(imgIn):
     imgId = imgIn.get('image_id')
     bound = imgIn.select(['riverMask']).geometry()
     angle = imgIn.select(['orthDegree'])
-    dem = ee.Image("users/eeProject/mergedSrtmHAE")
+    dem = ee.Image("users/eeProject/MERIT")
     infoEnds = imgIn.select(['riverMask'])
     infoExport = (imgIn.select('channelMask')
     .addBands(imgIn.select('^flag.*'))
