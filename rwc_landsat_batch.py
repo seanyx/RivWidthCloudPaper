@@ -7,7 +7,7 @@ if __name__ == '__main__':
     import os
     from os import listdir
     import argparse
-    from functions import maximum_no_of_tasks
+    from functions_batch import maximum_no_of_tasks
 
     ## default values
     localGoogleDriveDir = '/Users/yangxiao/Google_Drive/'
