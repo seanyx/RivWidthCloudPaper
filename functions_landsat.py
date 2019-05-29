@@ -85,7 +85,7 @@ def CalculateWaterAddFlagsSR(imgIn, waterMethod = 'Jones2019'):
     .addBands(fmask.eq(1).rename('flag_water')))
 
     water = ClassifyWater(imgIn, waterMethod).where(fmask.gte(2), ee.Image.constant(0))
-    hillshadow = CalcHillShadowSR(imgIn).multiply(-1).add(1).rename(['flag_hillshadow'])
+    hillshadow = CalcHillShadowSR(imgIn).Not().rename(['flag_hillshadow'])
 
     imgOut = (ee.Image(water.addBands(fmask).addBands(hillshadow).addBands(fmaskUnpacked)
     .setMulti({
