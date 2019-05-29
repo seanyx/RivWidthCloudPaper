@@ -54,35 +54,14 @@ def AddFmaskSR(image):
     .mask(temp.select(['Cloud']).gte(0)))
 
     return image.addBands(fmask)
-def CalcHillShadesSR(image):
-    # // calculate hill shades
-    mergedDEM = ee.Image("users/eeProject/MERIT").select('elevation').clip(image.geometry())
 
-    shiftDistance = 30
-    dp1 = ee.Image.cat(ee.Image(shiftDistance), ee.Image(shiftDistance))
-    dp2 = ee.Image.cat(ee.Image(-shiftDistance), ee.Image(shiftDistance))
-    dp3 = ee.Image.cat(ee.Image(shiftDistance), ee.Image(-shiftDistance))
-    dp4 = ee.Image.cat(ee.Image(-shiftDistance), ee.Image(-shiftDistance))
-
+def CalcHillShadowSR(image):
+    dem = ee.Image("users/eeProject/MERIT").clip(image.geometry().buffer(9000).bounds())
     SOLAR_AZIMUTH_ANGLE = ee.Number(image.get('SOLAR_AZIMUTH_ANGLE'))
     SOLAR_ZENITH_ANGLE = ee.Number(image.get('SOLAR_ZENITH_ANGLE'))
 
-    hillShade1 = (ee.Terrain.hillshade(mergedDEM.displace(dp1),
-    SOLAR_AZIMUTH_ANGLE.add(360), SOLAR_ZENITH_ANGLE))
-
-    hillShade2 = (ee.Terrain.hillshade(mergedDEM.displace(dp2),
-    SOLAR_AZIMUTH_ANGLE.add(360), SOLAR_ZENITH_ANGLE))
-
-    hillShade3 = (ee.Terrain.hillshade(mergedDEM.displace(dp3),
-    SOLAR_AZIMUTH_ANGLE.add(360), SOLAR_ZENITH_ANGLE))
-
-    hillShade4 = (ee.Terrain.hillshade(mergedDEM.displace(dp4),
-    SOLAR_AZIMUTH_ANGLE.add(360), SOLAR_ZENITH_ANGLE))
-
-    # // ee.Algorithms.HillShadow
-    hillShade = ee.ImageCollection.fromImages([hillShade1, hillShade2, hillShade3, hillShade4]).mean()
-
-    return hillShade.rename(['hillshade'])
+    return(ee.Terrain.hillShadow(dem, SOLAR_AZIMUTH_ANGLE, SOLAR_ZENITH_ANGLE, 100, True    )
+    .reproject("EPSG:4326", None, 90).rename(['hillshadow']))
 
 # /* functions to classify water (default) */
 def ClassifyWater(imgIn, method = 'Jones2019'):
@@ -106,9 +85,9 @@ def CalculateWaterAddFlagsSR(imgIn, waterMethod = 'Jones2019'):
     .addBands(fmask.eq(1).rename('flag_water')))
 
     water = ClassifyWater(imgIn, waterMethod).where(fmask.gte(2), ee.Image.constant(0))
-    hillshade = CalcHillShadesSR(imgIn).rename(['flag_hillshade'])
+    hillshadow = CalcHillShadowSR(imgIn).multiply(-1).add(1).rename(['flag_hillshadow'])
 
-    imgOut = (ee.Image(water.addBands(fmask).addBands(hillshade).addBands(fmaskUnpacked)
+    imgOut = (ee.Image(water.addBands(fmask).addBands(hillshadow).addBands(fmaskUnpacked)
     .setMulti({
         'image_id': imgIn.get('LANDSAT_ID'),
         'timestamp': imgIn.get('system:time_start'),
