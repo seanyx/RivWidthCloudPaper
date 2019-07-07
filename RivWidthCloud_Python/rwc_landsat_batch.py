@@ -9,8 +9,6 @@ if __name__ == '__main__':
     import argparse
     from functions_batch import maximum_no_of_tasks
 
-    ## default values
-    localGoogleDriveDir = '/Users/yangxiao/Google_Drive/'
 
     parser = argparse.ArgumentParser(prog = 'rwc_landsat_batch.py', description = "Batch execute rwc_landsat.py for a csv files that contains Landsat image IDs and/or point locations.\
     (Example: python rwc_landsat_batch.py example_batch_input/example_batch_input.csv)")
@@ -68,7 +66,7 @@ if __name__ == '__main__':
 
     for n in range(START_NO, N):
 
-        cmdstr = 'python rwc_landsat.py ' +  sceneIDList[n] + ' -f ' + FORMAT + ' -w ' + WATER_METHOD
+        cmdstr = 'python rwc_landsat_one_image.py ' +  sceneIDList[n] + ' -f ' + FORMAT + ' -w ' + WATER_METHOD
         cmdstr = cmdstr + ' -d ' + str(MAXDISTANCE) + ' -i ' + str(FILL_SIZE) + ' -b ' + str(MAXDISTANCE_BRANCH_REMOVAL)
 
         if OUTPUT_FOLDER:
