@@ -28,7 +28,7 @@ latitude|Latitude of the centerline point|Decimal degree
 longitude|Longitude of the centerline point|Decimal degree
 width|Wetted river width measured at the centerline point|Meter
 orthogonalDirection|Angle of the cross-sectional direction at the centerline point|Radian
-flag_elevation|Mean elevation across the river surface (unit: meter) based on [MERIT DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)|Meters
+flag_elevation|Mean elevation across the river surface (unit: meter) based on [MERIT DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)|Meter
 image_id|Image ID of the input Landsat image|NA
 crs|the projection of the input image|NA
 flag_hillshadow|indicate potential topographic shadow nearby that could affect the width accuracy|NA
@@ -48,4 +48,4 @@ An early access of this article can be found at: https://ieeexplore.ieee.org/doc
 
 ## Contact
 
-We welcome any feedback and suggestion of improvements. If you have any question about the algorithm, please don't hesitate to contact me at yangxiao@live.unc.edu.
+We welcome any feedback or suggestions for improvement. If you have any questions about the algorithm, please don't hesitate to contact yangxiao@live.unc.edu.
