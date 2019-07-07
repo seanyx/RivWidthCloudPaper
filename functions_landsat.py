@@ -60,7 +60,7 @@ def CalcHillShadowSR(image):
     SOLAR_AZIMUTH_ANGLE = ee.Number(image.get('SOLAR_AZIMUTH_ANGLE'))
     SOLAR_ZENITH_ANGLE = ee.Number(image.get('SOLAR_ZENITH_ANGLE'))
 
-    return(ee.Terrain.hillShadow(dem, SOLAR_AZIMUTH_ANGLE, SOLAR_ZENITH_ANGLE, 100, True    )
+    return(ee.Terrain.hillShadow(dem, SOLAR_AZIMUTH_ANGLE, SOLAR_ZENITH_ANGLE, 100, True)
     .reproject("EPSG:4326", None, 90).rename(['hillshadow']))
 
 # /* functions to classify water (default) */

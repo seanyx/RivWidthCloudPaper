@@ -67,7 +67,7 @@ exports.CalcHillShadowSR = function(image) {
   var dem = ee.Image("users/eeProject/MERIT").clip(image.geometry().buffer(9000).bounds());
   var SOLAR_AZIMUTH_ANGLE = ee.Number(image.get('SOLAR_AZIMUTH_ANGLE'));
   var SOLAR_ZENITH_ANGLE = ee.Number(image.get('SOLAR_ZENITH_ANGLE'));
-  return(ee.Terrain.hillShadow(dem, SOLAR_AZIMUTH_ANGLE, SOLAR_ZENITH_ANGLE, 100, true).reproject("EPSG:4326", null, 90).rename(['hillshadow']));
+  return(ee.Terrain.hillShadow(dem, SOLAR_AZIMUTH_ANGLE, SOLAR_ZENITH_ANGLE, 100, true).rename(['hillshadow']));
 };
 
 
