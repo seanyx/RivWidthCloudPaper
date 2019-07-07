@@ -17,20 +17,21 @@ The core algorithms responsible for calculating river centerlines and widths are
 
 ## Outputs
 
-Columns in the exported csv file
-
 Column name|Description|Unit
 -------|---------|---------
-latitude|latitude of the centerline point|decimal degree
-
-           latitude: latitude of the centerline point (unit: decimal degree)
-          longitude: longitude of the centerline point (unit: decimal degree)
-              width: width measured at the centerline point (unit: meter)
-              flag_snowIce, flag_cloud, flag_cldShadow, endsInWater, endsOverEdge, flag_hillshadow: quality flags-the widths are only considered accurate when all of them are 0
-orthogonalDirection: angle of the cross-sectional direction at the centerline point (unit: Rad)
-     flag_elevation: the mean elevation across the river surface (unit: meter) based on [MERIT DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/).
-           image_id: the image id of the input landsat image
-                crs: the projection of the input image
+latitude|Latitude of the centerline point|Decimal degree
+longitude|Longitude of the centerline point|Decimal degree
+width|Wetted river width measured at the centerline point|Meter
+orthogonalDirection|Angle of the cross-sectional direction at the centerline point|Radian
+flag_elevation|Mean elevation across the river surface (unit: meter) based on [MERIT DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)|Meters
+image_id|Image ID of the input Landsat image|
+crs|the projection of the input image|
+flag_snowIce||
+flag_cloud||
+flag_cldShadow||
+endsInWater||
+endsOverEdge||
+flag_hillshadow|quality flags-the widths are only considered accurate when all of them are 0|
 
 ## Cite
 
