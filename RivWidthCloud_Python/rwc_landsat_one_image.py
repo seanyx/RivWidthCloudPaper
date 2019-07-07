@@ -10,7 +10,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(prog = 'rwc_landsat_one_image.py',
     description = "Calculate river centerline and width in the provided Landsat scene. \
-    (Example: python rwc_landsat.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp)")
+    (Example: python rwc_landsat_one_image.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp)")
 
     parser.add_argument('LANDSAT_ID', help = 'LANDSAT_ID for any Landsat 5, 7, and 8 SR scene', type = str)
     parser.add_argument('-f', '--FORMAT', help = "Output file format ('csv' or 'shp'). Default: 'csv'", type = str, default = 'csv')
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     description = 'In POINT mode, width only calculated for the region close to the point \
     location specified by its lon, lat, and an identifier. The radius of the region is specified through the specified buffer. \
     The point must locate within the bounds of the scene. \
-    (Example: python rwc_landsat.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp -w Zou2018 -p -x -88.263 -y 37.453 -r 2000 -n testPoint)')
+    (Example: python rwc_landsat_one_image.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp -w Zou2018 -p -x -88.263 -y 37.453 -r 2000 -n testPoint)')
 
     group_validation.add_argument('-p', '--POINT', help = 'Enable the POINT mode', action = 'store_true')
     group_validation.add_argument('-x', '--LONGITUDE', help = 'Longitude of the point location', type = float)
