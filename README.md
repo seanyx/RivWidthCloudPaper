@@ -2,7 +2,7 @@
 
 RivWidthCloud, or RWC, is an open source software written to automate extracting river centerline and width from remotely sensed images. It was developed for the Google Earth Engine (GEE) platform and developed for both its JavaScript and Python APIs. A complete description of the method can be found in our publication [RivWidthCloud: An Automated Google Earth Engine algorithm for river width extraction from remotely sensed imagery](https://ieeexplore.ieee.org/document/8752013).
 
-# Usage guide
+## Usage guide
 
 The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient. For version-specific setup and example scripts, please refer to the README file in the corresponding folder.
 
