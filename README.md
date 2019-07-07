@@ -19,6 +19,10 @@ The core algorithms responsible for calculating river centerlines and widths are
 
 Columns in the exported csv file
 
+Column name|Description|Unit
+-------|---------|---------
+latitude|latitude of the centerline point|decimal degree
+
            latitude: latitude of the centerline point (unit: decimal degree)
           longitude: longitude of the centerline point (unit: decimal degree)
               width: width measured at the centerline point (unit: meter)
