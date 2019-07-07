@@ -1,11 +1,16 @@
 # RivWidthCloud
 
-RivWidthCloud is an open source software written to automate extracting river centerline and width from remotely sensed images. It was developed for the Google Earth Engine platform and developed for both its JavaScript and Python APIs. A complete description of the method can be found in our publication [RivWidthCloud: An Automated Google Earth Engine algorithm for river width extraction from remotely sensed imagery](https://ieeexplore.ieee.org/document/8752013).
+RivWidthCloud, or RWC, is an open source software written to automate extracting river centerline and width from remotely sensed images. It was developed for the Google Earth Engine (GEE) platform and developed for both its JavaScript and Python APIs. A complete description of the method can be found in our publication [RivWidthCloud: An Automated Google Earth Engine algorithm for river width extraction from remotely sensed imagery](https://ieeexplore.ieee.org/document/8752013).
+
+# Usage guide
+
+The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient. For version-specific setup and example scripts, please refer to the README file in the corresponding folder.
+
+## Files
 
 The core algorithms responsible for calculating river centerlines and widths are identical in the JavaScript and the Python version. However, there is minor differences in how users might call these functions. Below is a description of the files that were common to both version. For files unique to different version please refer to the README.md file in its corresponding folder.
 
-## List of files
-
+List of files that's common to both the JavaScript and the Python version:
 * __functions_Landsat578__: contains files to process Landsat collection 1 tier 1 SR images
 * __functions_Landsat578/functions_landsat__: process Landsat image to (1) add classified water mask and (2) add bands of quality flags (cloud, cloud shadow, snow/ice, hill shadow)
 * __functions_Landsat578/functions_waterClassification_Zou2018__: contains water classification function based on [Zou et al., 2018](https://doi.org/10.1073/pnas.1719275115).
