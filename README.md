@@ -24,14 +24,16 @@ longitude|Longitude of the centerline point|Decimal degree
 width|Wetted river width measured at the centerline point|Meter
 orthogonalDirection|Angle of the cross-sectional direction at the centerline point|Radian
 flag_elevation|Mean elevation across the river surface (unit: meter) based on [MERIT DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)|Meters
-image_id|Image ID of the input Landsat image|
-crs|the projection of the input image|
-flag_snowIce||
-flag_cloud||
-flag_cldShadow||
-endsInWater||
-endsOverEdge||
-flag_hillshadow|quality flags-the widths are only considered accurate when all of them are 0|
+image_id|Image ID of the input Landsat image|NA
+crs|the projection of the input image|NA
+flag_hillshadow|indicate potential topographic shadow nearby that could affect the width accuracy|NA
+flag_snowIce|indicate potential snow/ice nearby that could affect the width accuracy|NA
+flag_cloud|indicate potential cloud nearby that could affect the width accuracy|NA
+flag_cldShadow|indicate potential cloud shadow nearby that could affect the width accuracy|NA
+endsInWater|indicate inaccurate width due to the insufficient length of the cross-sectional segment that was used to measure the river width|NA
+endsOverEdge|indicate width too close to the edge of the image that the width can be inaccurate|NA
+
+_flag_snowIce, flag_cloud, flag_cldShadow, endsInWater, endsOverEdge, flag_hillshadow: all with values ranging from 0 to 1 with non-zero denoting that the corresponding conditions exist and the calculated width could be affected._
 
 ## Cite
 
