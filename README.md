@@ -6,11 +6,11 @@ The core algorithms responsible for calculating river centerlines and widths are
 
 ## List of files
 
-* __functions_Landsat578__: contains functions to process Landsat collection 1 tier 1 SR images
-* __functions_Landsat578/functions_landsat__: process Landsat image to (1) add classified water mask and (2) add bands of quality flags (cloud, cloud shadow, snow/ice)
-* __functions_Landsat578/functions_waterClassification_Zou2018__: contains water classification function based on (Zou et al., 2018).
-* __functions_Landsat578/functions_waterClassification_Jones2019__: contains water classification function based on Dynamic Surface Water Extent (DSWE) based on (Jones 2019).
-* __functions_Landsat578/functions_highlevel__: contains a wrapper function that takes image as input and outputs a csv file containing river centerlines and widths on that image.
+* __functions_Landsat578__: contains files to process Landsat collection 1 tier 1 SR images
+* __functions_Landsat578/functions_landsat__: process Landsat image to (1) add classified water mask and (2) add bands of quality flags (cloud, cloud shadow, snow/ice, hill shadow)
+* __functions_Landsat578/functions_waterClassification_Zou2018__: contains water classification function based on [Zou et al., 2018](https://doi.org/10.1073/pnas.1719275115).
+* __functions_Landsat578/functions_waterClassification_Jones2019__: contains water classification function based on Dynamic Surface Water Extent (DSWE) based on [Jones, 2019](https://doi.org/10.3390/rs11040374).
+* __rwc_landsat__: contains a wrapper function that sets the default parameter values for the RivWidthCloud software and outputs the main RivWidthCloud function.
 
 * __functions_centerline_width__: contains image processing functions that calculate 1px-wide centerline, crosssectional direction and widths sequentially.
 * __functions_river__: contains functions that calculate channel and river mask based on a given water mask.
@@ -39,4 +39,8 @@ _flag_snowIce, flag_cloud, flag_cldShadow, endsInWater, endsOverEdge, flag_hills
 
 Yang, X., T.M. Pavelsky, G.H. Allen, and G. Donchyts (2019), RivWidthCloud: An Automated Google Earth Engine algorithm for river width extraction from remotely sensed imagery, IEEE Geoscience and Remote Sensing Letters. DOI: 10.1109/LGRS.2019.2920225
 
-An early access of which can be find at: https://ieeexplore.ieee.org/document/8752013
+An early access of this article can be found at: https://ieeexplore.ieee.org/document/8752013
+
+## Contact
+
+We welcome any feedback and suggestion of improvements. If you have any question about the algorithm, please don't hesitate to contact me at yangxiao@live.unc.edu.
