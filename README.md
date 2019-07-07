@@ -6,14 +6,14 @@ The core algorithms responsible for calculating river centerlines and widths are
 
 ## List of files
 
-* __FOLDER__ functions_Landsat578: contains functions to process Landsat collection 1 tier 1 SR images
-* __FILE__: functions_Landsat578/functions_landsat.js: process Landsat image to (1) add classified water mask and (2) add bands of quality flags (cloud, cloud shadow, snow/ice)
-* __FILE__: functions_Landsat578/functions_waterClassification_Zou2018.js: contains water classification function based on (Zou et al., 2018).
-* __FILE__: functions_Landsat578/functions_waterClassification_Jones2019.js: contains water classification function based on Dynamic Surface Water Extent (DSWE) based on (Jones 2019).
-* __FILE__: functions_Landsat578/functions_highlevel.js: contains a wrapper function that takes image as input and outputs a csv file containing river centerlines and widths on that image.
+* __functions_Landsat578__: contains functions to process Landsat collection 1 tier 1 SR images
+* __functions_Landsat578/functions_landsat__: process Landsat image to (1) add classified water mask and (2) add bands of quality flags (cloud, cloud shadow, snow/ice)
+* __functions_Landsat578/functions_waterClassification_Zou2018__: contains water classification function based on (Zou et al., 2018).
+* __functions_Landsat578/functions_waterClassification_Jones2019__: contains water classification function based on Dynamic Surface Water Extent (DSWE) based on (Jones 2019).
+* __functions_Landsat578/functions_highlevel__: contains a wrapper function that takes image as input and outputs a csv file containing river centerlines and widths on that image.
 
-* __FILE__: functions_centerline_width.js: contains image processing functions that calculate 1px-wide centerline, crosssectional direction and widths sequentially.
-* __FILE__: functions_river.js: contains functions that calculate channel and river mask based on a given water mask.
+* __functions_centerline_width__: contains image processing functions that calculate 1px-wide centerline, crosssectional direction and widths sequentially.
+* __functions_river__: contains functions that calculate channel and river mask based on a given water mask.
 
 ## Outputs
 
