@@ -6,6 +6,7 @@ RivWidthCloud, or RWC, is an open source software written to automate extracting
 
 The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient.
 
+### JavaScript version quick example
 ```JavaScript
 // Goal: calculate river centerlines and widths for one Landsat SR image (LC08_L1TP_022034_20130422_20170310_01_T1)
 
@@ -15,28 +16,47 @@ var fns = require('users/eeProject/RivWidthCloudPaper:rwc_landsat.js');
 // assign the image id of the image from which the widths and centerline will be extracted
 var imageId = "LC08_L1TP_022034_20130422_20170310_01_T1";
 
-// setting the parameters for the rivwidth (rw) function
+// setting the parameters for the rivwidthcloud (rwc) function
 var aoi = ee.Geometry.Polygon(
         [[[-88.47207053763748, 37.46382559855354],
           [-88.47207053763748, 37.375480838211885],
           [-88.2592104302156, 37.375480838211885],
           [-88.2592104302156, 37.46382559855354]]], null, false);
-var rw = fns.rwGenSR('Jones2019', 4000, 333, 500, aoi);
+var rwc = fns.rwGenSR('Jones2019', 4000, 333, 500, aoi);
 
-// apply the rw function to an image
-var widths = rw(imageId);
+// apply the rwc function to the image
+var widths = rwc(imageId);
 
-// export the result as a csv file into Google drive
+// remove the geometry before exporting the width as CSV file
+widths = widths.map(function(f) {return(f.setGeometry(null))});
+
+// export the result as a CSV file into Google drive
 Export.table.toDrive({
-  collection: widths.map(function(f) {return(f.setGeometry(null))}),
+  collection: widths,
   description: imageId,
   folder: "",
   fileNamePrefix: imageId,
   fileFormat: "CSV"});
 ```
 
+### Python version quick example
+
+1. Export widths for one image given the image ID
 ```bash
-python rwc_landsat_one_image -h
+## show the help message
+python rwc_landsat_one_image.py -h
+
+## export widths for one image (LC08_L1TP_022034_20130422_20170310_01_T1) as shp file
+python rwc_landsat_one_image.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp
+```
+
+2. Export widths for multiple images with IDs read from a CSV file
+```bash
+## show the help message
+python rwc_landsat_batch.py -h
+
+## running multiple tasks with each one extracting widths from one image
+python rwc_landsat_batch.py example_batch_input/example_batch_input.csv
 ```
 
 ## Files
