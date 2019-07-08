@@ -8,7 +8,7 @@ The easiest and quickest way to use RWC is to run it from Google Earth Engine Ja
 
 ### JavaScript version quick example
 
-The following example can be copy and paste into the GEE code editor and run directly from the webpage.
+The following example can be copy and paste into the GEE code editor (like [this](https://code.earthengine.google.com/93f54ac8c4934db40e3be03e249e879d)) and run directly from the webpage.
 
 ```JavaScript
 // Goal: calculate river centerlines and widths for one Landsat SR image (LC08_L1TP_022034_20130422_20170310_01_T1)
