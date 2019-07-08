@@ -44,9 +44,9 @@ Export.table.toDrive({
 
 ### Python version quick example
 
-0. Running Python version requires setting up GEE Python environment beforehand. The tutorial for setting up the environment can be found at the official GEE user guide (https://developers.google.com/earth-engine/python_install)
+1. Running Python version requires setting up GEE Python environment beforehand. The tutorial for setting up the environment can be found at the official GEE user guide (https://developers.google.com/earth-engine/python_install)
 
-1. Export widths for one image given the image ID
+2. Export widths for one image given the image ID
 ```bash
 ## show the help message
 python rwc_landsat_one_image.py -h
@@ -55,7 +55,7 @@ python rwc_landsat_one_image.py -h
 python rwc_landsat_one_image.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp
 ```
 
-2. Export widths for multiple images with IDs read from a CSV file
+3. Export widths for multiple images with IDs read from a CSV file
 ```bash
 ## show the help message
 python rwc_landsat_batch.py -h
