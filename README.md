@@ -4,7 +4,40 @@ RivWidthCloud, or RWC, is an open source software written to automate extracting
 
 ## Usage guide
 
-The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient. For version-specific setup and example scripts, please refer to the README file in the corresponding folder.
+The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient.
+
+```JavaScript
+// Goal: calculate river centerlines and widths for one Landsat SR image (LC08_L1TP_022034_20130422_20170310_01_T1)
+
+// load in the functions
+var fns = require('users/eeProject/RivWidthCloudPaper:rwc_landsat.js');
+
+// assign the image id of the image from which the widths and centerline will be extracted
+var imageId = "LC08_L1TP_022034_20130422_20170310_01_T1";
+
+// setting the parameters for the rivwidth (rw) function
+var aoi = ee.Geometry.Polygon(
+        [[[-88.47207053763748, 37.46382559855354],
+          [-88.47207053763748, 37.375480838211885],
+          [-88.2592104302156, 37.375480838211885],
+          [-88.2592104302156, 37.46382559855354]]], null, false);
+var rw = fns.rwGenSR('Jones2019', 4000, 333, 500, aoi);
+
+// apply the rw function to an image
+var widths = rw(imageId);
+
+// export the result as a csv file into Google drive
+Export.table.toDrive({
+  collection: widths.map(function(f) {return(f.setGeometry(null))}),
+  description: imageId,
+  folder: "",
+  fileNamePrefix: imageId,
+  fileFormat: "CSV"});
+```
+
+```bash
+python rwc_landsat_one_image -h
+```
 
 ## Files
 
