@@ -48,19 +48,19 @@ Export.table.toDrive({
 
 2. Export widths for one image given the image ID
 ```bash
-## show the help message
+# show the help message
 python rwc_landsat_one_image.py -h
 
-## export widths for one image (LC08_L1TP_022034_20130422_20170310_01_T1) as shp file
+# export widths for one image (LC08_L1TP_022034_20130422_20170310_01_T1) as shp file
 python rwc_landsat_one_image.py LC08_L1TP_022034_20130422_20170310_01_T1 -f shp
 ```
 
 3. Export widths for multiple images with IDs read from a CSV file
 ```bash
-## show the help message
+# show the help message
 python rwc_landsat_batch.py -h
 
-## running multiple tasks with each one extracting widths from one image
+# running multiple tasks with each one extracting widths from one image
 python rwc_landsat_batch.py example_batch_input/example_batch_input.csv
 ```
 
