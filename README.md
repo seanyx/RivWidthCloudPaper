@@ -11,6 +11,18 @@ The easiest and quickest way to use RWC is to run it from Google Earth Engine Ja
 The following example computes and exports river centerlines and widths for one Landsat image. It can be copy and paste into the GEE code editor (like [this](https://code.earthengine.google.com/93f54ac8c4934db40e3be03e249e879d)) and run directly from the webpage.
 
 ```JavaScript
+MAIN FUNCTION in rwc_landsat.js:
+
+* parameterize riverwidth function
+* @param  {String} WATER_METHOD Water classification method ('Jones2019' or 'Zou2018'). Default: 'Zou2018'
+* @param  {integer} MAXDISTANCE Maximum distance (unit: meters) to check water pixel's connectivity to GRWL centerline. Default: 4000
+* @param  {integer} FILL_SIZE islands or bars smaller than this value (unit: pixels) will be removed before calculating centerline. Default: 333
+* @param  {integer} MAXDISTANCE_BRANCH_REMOVAL length of pruning. Spurious branch of the initial centerline will be removed by this length (unit: pixels). Default: 500
+* @param  {ee.Geometry.Polygon} AOI A polygon (or rectangle) geometry define the area of interest. Only widths and centerline from this area will be calculated. Default: null
+* @return {Function} The river width function that takes SR image ID as input and outputs csv file of centerline and widths
+
+rwGenSR(WATER_METHOD, MAXDISTANCE, FILL_SIZE, MAXDISTANCE_BRANCH_REMOVAL, AOI)
+
 // Goal: calculate river centerlines and widths for one Landsat SR image (LC08_L1TP_022034_20130422_20170310_01_T1)
 
 // load in RivWidthCloud
