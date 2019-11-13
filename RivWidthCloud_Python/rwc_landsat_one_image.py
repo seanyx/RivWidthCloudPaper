@@ -6,7 +6,7 @@ if __name__ == '__main__':
     import argparse
     import sys
     from functions_landsat import id2Img
-    from functions_highlevel import rwGenSR
+    from rwc_landsat import rwGenSR
 
     parser = argparse.ArgumentParser(prog = 'rwc_landsat_one_image.py',
     description = "Calculate river centerline and width in the provided Landsat scene. \
