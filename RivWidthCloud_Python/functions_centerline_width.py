@@ -264,7 +264,7 @@ def GetWidth(clAngleNorm, segmentInfo, endInfo, DM, crs, bound, scale, sceneID, 
 
     def SwitchGeometry(f):
         return (f
-        .setGeometry(ee.Geometry.LineString([f.get('p1'), f.get('p2')]))
+        .setGeometry(ee.Geometry.LineString(coords = [f.get('p1'), f.get('p2')], proj = crs, geodesic = False))
         .set('p1', None).set('p2', None)) # remove p1 and p2
 
     ## convert centerline image to a list. prepare for map function
