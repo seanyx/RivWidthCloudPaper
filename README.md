@@ -4,6 +4,9 @@ RivWidthCloud, or RWC, is an open source software written to automate extracting
 
 ## Usage guide
 
+__Note (update on December 31 2022)__
+USGS has discontinued the prodcution of collection 1 images, which RivWidthCloud was originally developed for. Use [this script](https://code.earthengine.google.com/20d6112ca2ffadf4b0f121a8fc736141) and the functions within to run RivWidthCloud on collection 2 images on Google Earth Engine. Original RivWidthCloud uses DSWE algorithm to identify water pixels, but since collection 2 has different reflectance values than collection 1, the original algorithm will need to be adapted before applied on collection 2 image. For now, the RivWidthCloud for collection 2 image uses the water classification from the Fmask algorithm, which is directly extracted from the quality band 'QA_PIXEL'. Please note that there might be future versions of RivWidthCloud with DSWE algorithm adapted. Future updates will be released here.
+
 The easiest and quickest way to use RWC is to run it from Google Earth Engine JavaScript code editor (https://developers.google.com/earth-engine/playground), where the functions in the RWC can be directly loaded and need no setup. The README file in the RivWidthCloud_JavaScript folder contains example script to run RWC for one Landsat image. If you need to run RWC over many Landsat images, then running the Python version might be more efficient.
 
 ### JavaScript version quick example
